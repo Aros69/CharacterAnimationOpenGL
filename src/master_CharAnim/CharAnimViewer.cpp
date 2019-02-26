@@ -150,8 +150,8 @@ int CharAnimViewer::update(const float time, const float delta) {
     }
     m_ske.setPose(m_bvh, m_frameNumber);
 
-    cubeController.update(delta);
-    characterController.update(m_frameNumber);
+    cubeController.update(delta / 1000);
+    characterController.update(delta / 1000);
     characterSkeleton.setPose(characterController.getAnim(),
                               characterController.getTimeAnim());
 

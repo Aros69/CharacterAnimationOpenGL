@@ -35,7 +35,7 @@ void CharacterController::update(const float dt) {
         // Handling input
         if (key_state('z')) {
             setForward(true);
-            accelerate(0.05);
+            accelerate(dt);
             moveKeyPressed = true;
         }
         if (key_state('q')) {
@@ -43,19 +43,18 @@ void CharacterController::update(const float dt) {
         }
         if (key_state('s')) {
             setForward(false);
-            accelerate(0.05);
+            accelerate(dt);
             moveKeyPressed = true;
         }
         if (key_state('d')) {
             turnXZ(-5.0);
         }
         if (key_state('x')) {
-            timeKicking = dt;
+            timeKicking = 0;
             setVelocity(0);
-
         }
         if (!moveKeyPressed) {
-            deccelerate(0.03);
+            deccelerate(dt);
         }
 
         // Update animation
@@ -70,17 +69,17 @@ void CharacterController::update(const float dt) {
         } else if (m_v < m_vMax / 2 && m_v > -m_vMax / 2 &&
                    actualAnim != getAnim(1)) {
             setAnim(1); // walking animation
-        } else if (m_v >= m_vMax / 2 && m_v >= -m_vMax / 2 &&
+        } else if ((m_v >= m_vMax / 2 || m_v <= -m_vMax / 2) &&
                    actualAnim != getAnim(2)) {
             setAnim(2); // running animation
         }
     } else {
-        if (dt - timeKicking > getAnim().getNumberOfFrame()) {
+        if (timeAnim - timeKicking > getAnim().getNumberOfFrame()) {
             timeKicking = -1;
         }
     };
 
 
-    m_ch2w = m_ch2w * Translation(m_v, 0, 0);
+    m_ch2w = m_ch2w * Translation(m_v*dt, 0, 0);
 
 }

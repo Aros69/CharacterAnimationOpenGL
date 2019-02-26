@@ -12,15 +12,15 @@ public:
 
     /**
      *
-     * @param dt temp écoulé depuis dernier appel en ms
+     * @param dt temp écoulé depuis dernier appel en seconde
      */
     virtual void update(const float dt);
 
     void turnXZ(const float &rot_angle_v);
 
-    void accelerate(const float &speed);
+    void accelerate(const float &dt);
 
-    void deccelerate(const float &speed);
+    void deccelerate(const float &dt);
 
     void setVelocityMax(const float vmax) { m_vMax = vmax; }
 
