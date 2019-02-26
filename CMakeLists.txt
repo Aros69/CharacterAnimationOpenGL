@@ -1,0 +1,75 @@
+cmake_minimum_required(VERSION 3.12)
+project(gkit2light_master_CharAnim)
+
+set(CMAKE_CXX_STANDARD 14)
+
+include_directories(src/gKit)
+include_directories(src/master_CharAnim)
+
+add_executable(gkit2light_master_CharAnim
+        src/gKit/app.cpp
+        src/gKit/app.h
+        src/gKit/app_time.cpp
+        src/gKit/app_time.h
+        src/gKit/color.cpp
+        src/gKit/color.h
+        src/gKit/draw.cpp
+        src/gKit/draw.h
+        src/gKit/gamepads.cpp
+        src/gKit/gamepads.h
+        src/gKit/glcore.h
+        src/gKit/image.cpp
+        src/gKit/image.h
+        src/gKit/image_hdr.cpp
+        src/gKit/image_hdr.h
+        src/gKit/image_io.cpp
+        src/gKit/image_io.h
+        src/gKit/mat.cpp
+        src/gKit/mat.h
+        src/gKit/mesh.cpp
+        src/gKit/mesh.h
+        src/gKit/orbiter.cpp
+        src/gKit/orbiter.h
+        src/gKit/program.cpp
+        src/gKit/program.h
+        src/gKit/quaternion.h
+        src/gKit/rgbe.cpp
+        src/gKit/rgbe.h
+        src/gKit/text.cpp
+        src/gKit/text.h
+        src/gKit/texture.cpp
+        src/gKit/texture.h
+        src/gKit/uniforms.cpp
+        src/gKit/uniforms.h
+        src/gKit/vec.cpp
+        src/gKit/vec.h
+        src/gKit/wavefront.cpp
+        src/gKit/wavefront.h
+        src/gKit/widgets.cpp
+        src/gKit/widgets.h
+        src/gKit/window.cpp
+        src/gKit/window.h
+        src/master_CharAnim/BVH.cpp
+        src/master_CharAnim/BVH.h
+        src/master_CharAnim/BVHAxis.h
+        src/master_CharAnim/BVHChannel.cpp
+        src/master_CharAnim/BVHChannel.h
+        src/master_CharAnim/BVHJoint.cpp
+        src/master_CharAnim/BVHJoint.h
+        src/master_CharAnim/CharAnimViewer.cpp
+        src/master_CharAnim/CharAnimViewer.h
+        src/master_CharAnim/main.cpp
+        src/master_CharAnim/Particle.h
+        src/master_CharAnim/PhysicalWorld.cpp
+        src/master_CharAnim/PhysicalWorld.h
+        src/master_CharAnim/Skeleton.cpp
+        src/master_CharAnim/Skeleton.h
+        src/master_CharAnim/TransformQ.h
+        src/master_CharAnim/Viewer.cpp
+        src/master_CharAnim/Viewer.h
+        src/master_CharAnim/ViewerBasic.cpp
+        src/master_CharAnim/ViewerBasic.h
+        src/image_viewer.cpp
+        src/shader_kit.cpp
+        src/master_CharAnim/CubeController.cpp
+        src/master_CharAnim/CubeController.h src/master_CharAnim/CharacterController.cpp src/master_CharAnim/CharacterController.h)
