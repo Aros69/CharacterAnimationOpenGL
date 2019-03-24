@@ -1,4 +1,0 @@
-/home/robin/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/183.5153.40/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/robin/Master/Mif37Anim/MifAnim/gkit2light-master_CharAnim
--- Configuring done
--- Generating done
--- Build files have been written to: /home/robin/Master/Mif37Anim/MifAnim/gkit2light-master_CharAnim/cmake-build-debug

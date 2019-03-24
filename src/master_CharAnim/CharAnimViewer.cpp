@@ -32,8 +32,8 @@ int CharAnimViewer::init() {
     init_sphere();
 
 
-    //m_bvh.init("data/bvh/motionGraph/dancer.bvh");
-    m_bvh.init(smart_path("data/bvh/motionFSM/avatar_kick_roundhouse_R.bvh"));
+    m_bvh.init("data/bvh/motionGraph/dancer.bvh");
+    //m_bvh.init(smart_path("data/bvh/motionFSM/avatar_kick_roundhouse_R.bvh"));
 
     m_frameNumber = 0;
 
@@ -47,8 +47,8 @@ int CharAnimViewer::init() {
     m_ske.init(m_bvh);
     m_ske.setPose(m_bvh, -1);// met le skeleton a la pose au repos
 
-    characterSkeleton.init(characterController.getAnim());
-    characterSkeleton.setPose(characterController.getAnim(), -1);
+    characterSkeleton.init(*characterController.getAnim());
+    characterSkeleton.setPose(*characterController.getAnim(), -1);
 
     return 0;
 }
@@ -63,7 +63,7 @@ void CharAnimViewer::draw_skeleton(const Skeleton &) {
 
 void CharAnimViewer::draw_character(const Skeleton &) {
     for (int i = 1; i < characterSkeleton.numberOfJoint(); ++i) {
-        Transform animCorrection = characterController.getAnimCorrection();
+        Transform animCorrection = *characterController.getAnimCorrection();
         Point point1 = (characterController.getMatChar() * animCorrection)(
                 characterSkeleton.getJointPosition(i));
         Point point2 = (characterController.getMatChar() * animCorrection)(
@@ -88,11 +88,12 @@ int CharAnimViewer::render() {
     //draw_skeleton(m_ske);
 
     // Affiche le personnage Controlle
-    draw_sphere(cubeController.getCharacterPosition(), 11);
-    draw_cube(cubeController.getMatChar() * Scale(10, 10, 10));
+    //draw_sphere(cubeController.getCharacterPosition(), 11);
+    //draw_cube(cubeController.getMatChar() * Scale(10, 10, 10));
     draw_character(characterSkeleton);
 
-    draw_sphere(testTransform);
+    // Display for time base update (benchmark independant)
+    /* draw_sphere(testTransform); */
 
     /*const int MAX = 5;
     float A[] = { -10, -20, -30, -40, -50 };
@@ -135,6 +136,8 @@ int CharAnimViewer::render() {
 int CharAnimViewer::update(const float time, const float delta) {
     // time est le temps ecoule depuis le demarrage de l'application, en millisecondes,
     // delta est le temps ecoule depuis l'affichage de la derniere image / le dernier appel a draw(), en millisecondes.
+
+    // Update for time update (benchmark independant)
     /*secondNumber += delta;
     if (secondNumber>1000){
         std::cout<<"+1 secondes\n";
@@ -148,11 +151,11 @@ int CharAnimViewer::update(const float time, const float delta) {
     if (key_state('b')) {
         m_frameNumber -= 2;
     }
-    m_ske.setPose(m_bvh, m_frameNumber);
+    //m_ske.setPose(m_bvh, m_frameNumber);
 
     cubeController.update(delta / 1000);
     characterController.update(delta / 1000);
-    characterSkeleton.setPose(characterController.getAnim(),
+    characterSkeleton.setPose(*characterController.getAnim(),
                               characterController.getTimeAnim());
 
     m_frameNumber++;

@@ -38,6 +38,8 @@ public:
 
     float velocity() const { return m_v; }
 
+    float velocityMax() const { return m_vMax; }
+
 protected:
     Transform m_ch2w;   // matrice du character vers le monde
     // le personnage se déplace vers X

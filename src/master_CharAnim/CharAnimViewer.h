@@ -39,6 +39,7 @@ protected:
     Skeleton characterSkeleton;
     CharacterController characterController;
 
+    // Test for time base update (benchmark independant)
     double secondNumber = 0;
     Transform testTransform;
 
