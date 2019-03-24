@@ -5,8 +5,9 @@ Mail : robin.donnay@etu.univ-lyon1.fr
 
 ## Compilation et éxecution
 
-- Pour compiler (sous linux avec le shell) : `premake4 --file=master_CharAnim.lua gmake && make -f master_CharAnim.make`  
-- Pour lancer le programme (sous linux avec le shell) : `bin/master_CharAnim`
+- Pour compiler (sous linux avec le shell) : `premake4 --file=master_CharAnim.lua gmake && make -f master_CharAnim.make` 
+- Pour compiler (avec Cmake), utilisez le "CmakeLists.txt" à la racine du projet   
+- Pour lancer le programme (sous linux avec le shell) : `bin/master_CharAnim` (si compilation "classique") ou `./gki2light_master_CharAnim` (si compilation avec Cmake)
 
 ## Commandes de jeux
 
