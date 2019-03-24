@@ -6,15 +6,13 @@
 
 class Walk : public Idle {
 public:
-    Walk(CharacterController *characterController)
-            : Idle(characterController) {
+    Walk(CharacterController *characterController) {
+        character = characterController;
         bvh.init("data/bvh/motionGraph/marcher.bvh");
         animCorrection = Transform();
     };
 
     virtual void update(const float dt) override;
-
-    //virtual void handleInput(const float dt) override;
 };
 
 

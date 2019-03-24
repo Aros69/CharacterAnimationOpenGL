@@ -9,5 +9,4 @@ void Run::update(const float dt) {
                && character->velocity() > -character->velocityMax() / 2) {
         character->setActualAnimWalk(0);
     }
-
 }

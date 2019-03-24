@@ -9,3 +9,5 @@ void Kick::update(const float dt) {
         character->setTimeAnim(character->getTimeAnim() + 1);
     }*/
 }
+
+void Kick::handleInput(const float dt) {}

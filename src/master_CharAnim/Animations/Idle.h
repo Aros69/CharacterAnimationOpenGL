@@ -6,6 +6,8 @@
 
 class Idle : public AnimState {
 public:
+    Idle() : AnimState(nullptr) {};
+
     Idle(CharacterController *characterController)
             : AnimState(characterController) {
         bvh.init("data/bvh/motionGraph/dancer.bvh");

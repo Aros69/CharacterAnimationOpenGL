@@ -12,7 +12,7 @@ public:
             animCorrection = RotationY(90);
     };
 
-    void handleInput(const float dt) override{};
+    void handleInput(const float dt) override;
 
     void update(const float dt) override;
 };

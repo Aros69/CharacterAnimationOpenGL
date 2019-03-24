@@ -6,8 +6,8 @@
 
 class Run : public Idle {
 public:
-    Run(CharacterController *characterController)
-            : Idle(characterController) {
+    explicit Run(CharacterController *characterController) {
+        character = characterController;
         bvh.init("data/bvh/motionGraph/courir.bvh");
         animCorrection = Transform();
     };
