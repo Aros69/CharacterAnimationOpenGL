@@ -139,6 +139,14 @@ OBJECTS := \
 	$(OBJDIR)/main.o \
 	$(OBJDIR)/Viewer.o \
 	$(OBJDIR)/PhysicalWorld.o \
+	$(OBJDIR)/Smoke.o \
+	$(OBJDIR)/NonStopAnim.o \
+	$(OBJDIR)/Run.o \
+	$(OBJDIR)/SmokeIdle.o \
+	$(OBJDIR)/Walk.o \
+	$(OBJDIR)/Idle.o \
+	$(OBJDIR)/CrouchWalk.o \
+	$(OBJDIR)/Crouch.o \
 
 RESOURCES := \
 
@@ -290,6 +298,30 @@ $(OBJDIR)/Viewer.o: src/master_CharAnim/Viewer.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/PhysicalWorld.o: src/master_CharAnim/PhysicalWorld.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/Smoke.o: src/master_CharAnim/Animations/Smoke.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/NonStopAnim.o: src/master_CharAnim/Animations/NonStopAnim.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/Run.o: src/master_CharAnim/Animations/Run.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/SmokeIdle.o: src/master_CharAnim/Animations/SmokeIdle.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/Walk.o: src/master_CharAnim/Animations/Walk.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/Idle.o: src/master_CharAnim/Animations/Idle.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/CrouchWalk.o: src/master_CharAnim/Animations/CrouchWalk.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/Crouch.o: src/master_CharAnim/Animations/Crouch.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 

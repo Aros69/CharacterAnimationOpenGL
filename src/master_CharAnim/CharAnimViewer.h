@@ -43,7 +43,9 @@ protected:
     double secondNumber = 0;
     Transform testTransform;
 
-    void draw_skeleton(const Skeleton &);
+    bool needHelp = true;
+
+    void draw_skeleton(const Skeleton &, const Transform offset);
 
     void draw_character(const Skeleton &);
 

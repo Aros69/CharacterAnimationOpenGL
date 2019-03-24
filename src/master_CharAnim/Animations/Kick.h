@@ -1,20 +1,14 @@
 #ifndef GKIT2LIGHT_MASTER_CHARANIM_KICK_H
 #define GKIT2LIGHT_MASTER_CHARANIM_KICK_H
 
+#include "NonStopAnim.h"
 
-#include "AnimState.h"
-
-class Kick : public AnimState{
+class Kick : public NonStopAnim{
 public:
     Kick(CharacterController *characterController)
-    : AnimState(characterController) {
-            bvh.init("data/bvh/motionGraph/frapper.bvh");
-            animCorrection = RotationY(90);
+    : NonStopAnim(characterController) {
+            bvh.init("data/bvh/motionGraph_second_life/avatar_kick_roundhouse_R.bvh");
     };
-
-    void handleInput(const float dt) override;
-
-    void update(const float dt) override;
 };
 
 

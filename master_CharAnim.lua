@@ -6,7 +6,9 @@ dofile "./premake4.lua"
 gfx_masterCharAnim_dir = path.getabsolute(".")
 
 master_CharAnim_files = {	gfx_masterCharAnim_dir .. "/src/master_CharAnim/*.cpp", 
-							gfx_masterCharAnim_dir .. "/src/master_CharAnim/*.h"
+							gfx_masterCharAnim_dir .. "/src/master_CharAnim/*.h",
+							gfx_masterCharAnim_dir .. "/src/master_CharAnim/Animations/*.h",
+							gfx_masterCharAnim_dir .. "/src/master_CharAnim/Animations/*.cpp"
 	}
 	
 project("master_CharAnim")

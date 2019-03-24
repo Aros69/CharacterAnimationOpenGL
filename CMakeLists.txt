@@ -40,7 +40,17 @@ add_executable(gkit2light_master_CharAnim
         src/master_CharAnim/Animations/Run.h
         src/master_CharAnim/Animations/Run.cpp
         src/master_CharAnim/Animations/Kick.h
-        src/master_CharAnim/Animations/Kick.cpp)
+        src/master_CharAnim/Animations/Crouch.cpp
+        src/master_CharAnim/Animations/Crouch.h
+        src/master_CharAnim/Animations/CrouchWalk.cpp
+        src/master_CharAnim/Animations/CrouchWalk.h
+        src/master_CharAnim/Animations/NonStopAnim.cpp
+        src/master_CharAnim/Animations/NonStopAnim.h
+        src/master_CharAnim/Animations/Dance.h
+        src/master_CharAnim/Animations/SmokeIdle.cpp
+        src/master_CharAnim/Animations/SmokeIdle.h
+        src/master_CharAnim/Animations/Smoke.h
+        src/master_CharAnim/Animations/Smoke.cpp)
 
 # Link SDL2, OpenGL and GLEW
 target_link_libraries(gkit2light_master_CharAnim

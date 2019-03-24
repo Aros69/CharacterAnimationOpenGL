@@ -32,7 +32,7 @@ int CharAnimViewer::init() {
     init_sphere();
 
 
-    m_bvh.init("data/bvh/motionGraph/dancer.bvh");
+    m_bvh.init("data/bvh/danse.bvh");
     //m_bvh.init(smart_path("data/bvh/motionFSM/avatar_kick_roundhouse_R.bvh"));
 
     m_frameNumber = 0;
@@ -54,10 +54,11 @@ int CharAnimViewer::init() {
 }
 
 
-void CharAnimViewer::draw_skeleton(const Skeleton &) {
+void CharAnimViewer::draw_skeleton(const Skeleton &, const Transform offset) {
+
     for (int i = 1; i < m_ske.numberOfJoint(); ++i) {
-        draw_cylinder(m_ske.getJointPosition(i),
-                      m_ske.getJointPosition(m_ske.getParentId(i)), 1);
+        draw_cylinder(offset(m_ske.getJointPosition(i)),
+                      offset(m_ske.getJointPosition(m_ske.getParentId(i))), 1);
     }
 }
 
@@ -85,11 +86,13 @@ int CharAnimViewer::render() {
     //m_world.draw();
 
     // Affiche le skeleton
-    //draw_skeleton(m_ske);
+    const Transform offsetSkeleton = Translation(-100, 0, 0);
+    draw_skeleton(m_ske, offsetSkeleton);
 
     // Affiche le personnage Controlle
-    //draw_sphere(cubeController.getCharacterPosition(), 11);
-    //draw_cube(cubeController.getMatChar() * Scale(10, 10, 10));
+    const Transform offsetSphere = Translation(-50, 0, 0);
+    draw_sphere(offsetSphere(cubeController.getCharacterPosition()), 11);
+    draw_cube(offsetSphere * cubeController.getMatChar() * Scale(10, 10, 10));
     draw_character(characterSkeleton);
 
     // Display for time base update (benchmark independant)
@@ -132,11 +135,31 @@ int CharAnimViewer::render() {
     return 1;
 }
 
+void commande() {
+    std::cout
+            << "Bienvenue dans cette application d'animation de bonhomme en baton!\n"
+            << "Voici les commandes :\n"
+            << "- 'n' permet de faire avancer le temps du grand squelette a gauche pour visionner son animation\n"
+            << "- 'b' permet de faire reculer le temps du squelette (attention à ne pas descendre en dessous de 0 sinon c'est bizarre)\n"
+            << "- 'z', 'q', 's' et 'd' permettent de faire bouger le bonhomme au centre ainsi que la sphere/cube derriere lui\n"
+            << "- 'x' permet de donner un coup de pied et afficher des informations sur la sphere/cube\n"
+            << "- 'left shift' permet de s'accroupir et de se deplacer plus doucement (si combine avec zqsd)\n"
+            << "- '1', '2', '3' permettent de danser si vous ne bouger pas\n"
+            << "- 'espace' permet de rentrer dans l'état fumeur (si vous ne bougez pas). Ce dernier vous empeche d'avancer."
+            << " Appuyez sur 'a' pour fumer (autant de fois que souhaite), appuyez sur 'e' pour arreter et recommencer a bouger.\n";
+}
 
 int CharAnimViewer::update(const float time, const float delta) {
     // time est le temps ecoule depuis le demarrage de l'application, en millisecondes,
     // delta est le temps ecoule depuis l'affichage de la derniere image / le dernier appel a draw(), en millisecondes.
 
+    if (needHelp) {
+        commande();
+        needHelp = false;
+    }
+    if (key_state('h')) {
+        needHelp = true;
+    }
     // Update for time update (benchmark independant)
     /*secondNumber += delta;
     if (secondNumber>1000){
@@ -147,18 +170,19 @@ int CharAnimViewer::update(const float time, const float delta) {
 
     if (key_state('n')) {
         m_frameNumber++;
+        std::cout << m_frameNumber << '\n';
     }
     if (key_state('b')) {
-        m_frameNumber -= 2;
+        --m_frameNumber;
+        std::cout << m_frameNumber << '\n';
     }
-    //m_ske.setPose(m_bvh, m_frameNumber);
+    m_ske.setPose(m_bvh, m_frameNumber);
 
     cubeController.update(delta / 1000);
     characterController.update(delta / 1000);
     characterSkeleton.setPose(*characterController.getAnim(),
-                              characterController.getTimeAnim());
+                              characterController.getFrameAnim());
 
-    m_frameNumber++;
     m_world.update(0.1f);
     return 0;
 }

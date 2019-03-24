@@ -10,7 +10,7 @@ public:
 
     Idle(CharacterController *characterController)
             : AnimState(characterController) {
-        bvh.init("data/bvh/motionGraph/dancer.bvh");
+        bvh.init("data/bvh/motionGraph_second_life/avatar_impatient.bvh");
         animCorrection = RotationY(90);
     };
 

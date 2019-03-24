@@ -14,6 +14,8 @@ protected:
     CharacterController *character;
     chara::BVH bvh;
     Transform animCorrection;
+    double timeAnim;
+    unsigned int actualframe;
 
 public:
     AnimState() = delete;
@@ -22,9 +24,33 @@ public:
         character = characterController;
     }
 
+    double getTimeAnim() const {
+        return timeAnim;
+    }
+
+    void setTimeAnim(double timeAnim) {
+        AnimState::timeAnim = timeAnim;
+    }
+
+    unsigned int getActualframe() const {
+        return actualframe;
+    }
+
+    void setActualframe(unsigned int actualframe) {
+        AnimState::actualframe = actualframe;
+    }
+
     const chara::BVH *getBVH() const { return &bvh; };
 
     const Transform *getAnimCorrection() const { return &animCorrection; };
+
+    void increaseTimeAnim(const float dt){
+        timeAnim+=dt;
+        if (timeAnim>=bvh.getFrameTime()){
+            ++actualframe;
+            timeAnim=0;
+        }
+    }
 
     virtual void update(const float dt) = 0;
 

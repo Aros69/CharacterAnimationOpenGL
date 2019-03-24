@@ -28,8 +28,7 @@ void CubeController::update(const float dt) {
         deccelerate(dt);
     }
     if (key_state('x')) {
-        std::cout << "dt = " << dt << "\n";
-        std::cout << "m_v = " << m_v << "\n";
+        std::cout << "dt = " << dt << ", m_v = " << m_v << "\n";
     }
     m_ch2w = m_ch2w * Translation(m_v*dt, 0, 0);
 }

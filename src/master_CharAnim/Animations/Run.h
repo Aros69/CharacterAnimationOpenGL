@@ -8,8 +8,8 @@ class Run : public Idle {
 public:
     explicit Run(CharacterController *characterController) {
         character = characterController;
-        bvh.init("data/bvh/motionGraph/courir.bvh");
-        animCorrection = Transform();
+        bvh.init("data/bvh/motionGraph_second_life/avatar_run.bvh");
+        animCorrection = RotationY(90);
     };
 
     virtual void update(const float dt) override;
