@@ -3,7 +3,7 @@
 
 void NonStopAnim::update(const float dt) {
     handleInput(dt);
-    if (actualframe > bvh.getNumberOfFrame()) {
+    if (actualFrame > bvh.getNumberOfFrame()) {
         character->setActualAnimIdle(0);
     }
 }

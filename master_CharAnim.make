@@ -133,6 +133,7 @@ OBJECTS := \
 	$(OBJDIR)/CharAnimViewer.o \
 	$(OBJDIR)/BVHChannel.o \
 	$(OBJDIR)/CharacterController.o \
+	$(OBJDIR)/MotionGraph.o \
 	$(OBJDIR)/ViewerBasic.o \
 	$(OBJDIR)/BVHJoint.o \
 	$(OBJDIR)/Skeleton.o \
@@ -280,6 +281,9 @@ $(OBJDIR)/BVHChannel.o: src/master_CharAnim/BVHChannel.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/CharacterController.o: src/master_CharAnim/CharacterController.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/MotionGraph.o: src/master_CharAnim/MotionGraph.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/ViewerBasic.o: src/master_CharAnim/ViewerBasic.cpp

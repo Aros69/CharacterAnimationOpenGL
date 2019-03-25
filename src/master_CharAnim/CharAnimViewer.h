@@ -31,6 +31,8 @@ protected:
     int m_frameNumber;
 
     Skeleton m_ske;
+    // Pour tester le calcul de distance entre 2 pose d'animation
+    Skeleton m_ske2;
 
     PhysicalWorld m_world;
 

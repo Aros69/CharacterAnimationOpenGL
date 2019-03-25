@@ -2,7 +2,7 @@
 #include "CharacterController.h"
 
 void Smoke::update(const float dt) {
-    if (actualframe > bvh.getNumberOfFrame()) {
+    if (actualFrame > bvh.getNumberOfFrame()) {
         character->setActualAnimSmokeIdle(0);
     }
 }

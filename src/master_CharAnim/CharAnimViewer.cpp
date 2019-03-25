@@ -47,6 +47,9 @@ int CharAnimViewer::init() {
     m_ske.init(m_bvh);
     m_ske.setPose(m_bvh, -1);// met le skeleton a la pose au repos
 
+    m_ske2.init(m_bvh);
+    m_ske2.setPose(m_bvh, -1);
+
     characterSkeleton.init(*characterController.getAnim());
     characterSkeleton.setPose(*characterController.getAnim(), -1);
 
@@ -137,7 +140,7 @@ int CharAnimViewer::render() {
 
 void commande() {
     std::cout
-            << "Bienvenue dans cette application d'animation de bonhomme en baton!\n"
+            << "\n\nBienvenue dans cette application d'animation de bonhomme en baton!\n"
             << "Voici les commandes :\n"
             << "- 'n' permet de faire avancer le temps du grand squelette a gauche pour visionner son animation\n"
             << "- 'b' permet de faire reculer le temps du squelette (attention à ne pas descendre en dessous de 0 sinon c'est bizarre)\n"
@@ -146,7 +149,7 @@ void commande() {
             << "- 'left shift' permet de s'accroupir et de se deplacer plus doucement (si combine avec zqsd)\n"
             << "- '1', '2', '3' permettent de danser si vous ne bouger pas\n"
             << "- 'espace' permet de rentrer dans l'état fumeur (si vous ne bougez pas). Ce dernier vous empeche d'avancer."
-            << " Appuyez sur 'a' pour fumer (autant de fois que souhaite), appuyez sur 'e' pour arreter et recommencer a bouger.\n";
+            << " Appuyez sur 'a' pour fumer (autant de fois que souhaite), appuyez sur 'e' pour arreter et recommencer a bouger.\n\n\n";
 }
 
 int CharAnimViewer::update(const float time, const float delta) {
@@ -156,6 +159,10 @@ int CharAnimViewer::update(const float time, const float delta) {
     if (needHelp) {
         commande();
         needHelp = false;
+
+        // Pour voir la distance entre 2 anim
+        std::cout << "Distance entre 2 poses d'animations : "
+                  << m_ske.distance(m_ske, m_ske2) << "\n";
     }
     if (key_state('h')) {
         needHelp = true;
@@ -177,6 +184,7 @@ int CharAnimViewer::update(const float time, const float delta) {
         std::cout << m_frameNumber << '\n';
     }
     m_ske.setPose(m_bvh, m_frameNumber);
+    m_ske2.setPose(m_bvh, m_frameNumber + 10);
 
     cubeController.update(delta / 1000);
     characterController.update(delta / 1000);

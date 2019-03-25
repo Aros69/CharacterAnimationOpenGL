@@ -22,7 +22,6 @@ int Skeleton::getParentId(const int i) const {
     return m_joints[i].m_parentId;
 }
 
-
 void Skeleton::setPose(const BVH &bvh, int frameNumber) {
     int realFrame = frameNumber % bvh.getNumberOfFrame();
     float xOffset, yOffset, zOffset;
@@ -74,10 +73,18 @@ void Skeleton::setPose(const BVH &bvh, int frameNumber) {
         }
         m_joints[i].m_l2w = newPose;
     }
-    /*
-    for (int i = 0; i < m_joints.size(); ++i) {
-        //std::cout << bvh.getJoint(i).getNumberOfChannel() << "\n";
+}
 
-
-    }*/
+float Skeleton::distance(const Skeleton &a, const Skeleton &b) {
+    float res = 0;
+    Point pointA, pointB;
+    if (a.numberOfJoint() != b.numberOfJoint()) {
+        return INTMAX_MAX;
+    }
+    for (int i = 0; i < a.numberOfJoint(); ++i) {
+        pointA = a.getJointPosition(i);
+        pointB = b.getJointPosition(i);
+        res += distance2(pointA, pointB);
+    }
+    return res;
 }

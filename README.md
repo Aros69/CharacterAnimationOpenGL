@@ -8,6 +8,7 @@ Mail : robin.donnay@etu.univ-lyon1.fr
 - Pour compiler (sous linux avec le shell) : `premake4 --file=master_CharAnim.lua gmake && make -f master_CharAnim.make` 
 - Pour compiler (avec Cmake), utilisez le "CmakeLists.txt" à la racine du projet   
 - Pour lancer le programme (sous linux avec le shell) : `bin/master_CharAnim` (si compilation "classique") ou `./gki2light_master_CharAnim` (si compilation avec Cmake)
+- Pour nettoyer le dossier du projet des fichiers générés un script `.clean.sh` est disponible à la racine (fonctionne sous Linux)    
 
 ## Commandes de jeux
 
@@ -25,4 +26,4 @@ Mail : robin.donnay@etu.univ-lyon1.fr
 - Controle d'une sphère/cube... (cf : "src/master_CharAnim/CubeController.cpp")  
 - Animation et controle d'un personnage  (cf : "src/master_CharAnim/CharacterController.cpp")  
 - Véritable State Machine permettant l'ajout rapide et simple d'animation à un personnage (cf : "src/master_CharAnim/Animations/") 
-- (EN COURS) Création d'un graphe d'animation 
+- (EN COURS) Création d'un graphe d'animation (calcul de distance d'animation `fait` cf: "src/master_CharAnim/Skeleton.cpp" et début de l'implémentation du MotionGraph cf : "src/master_CharAnim/MotionGraph.h")

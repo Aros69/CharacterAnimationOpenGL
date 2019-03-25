@@ -50,7 +50,7 @@ add_executable(gkit2light_master_CharAnim
         src/master_CharAnim/Animations/SmokeIdle.cpp
         src/master_CharAnim/Animations/SmokeIdle.h
         src/master_CharAnim/Animations/Smoke.h
-        src/master_CharAnim/Animations/Smoke.cpp)
+        src/master_CharAnim/Animations/Smoke.cpp src/master_CharAnim/MotionGraph.cpp src/master_CharAnim/MotionGraph.h)
 
 # Link SDL2, OpenGL and GLEW
 target_link_libraries(gkit2light_master_CharAnim

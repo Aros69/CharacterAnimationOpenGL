@@ -7,7 +7,6 @@
 
 class CharacterController;
 
-// TODO Check how to correctly do transition between animation
 // TODO Implement Motion Graph
 class AnimState {
 protected:
@@ -15,7 +14,7 @@ protected:
     chara::BVH bvh;
     Transform animCorrection;
     double timeAnim;
-    unsigned int actualframe;
+    int actualFrame;
 
 public:
     AnimState() = delete;
@@ -33,22 +32,22 @@ public:
     }
 
     unsigned int getActualframe() const {
-        return actualframe;
+        return actualFrame;
     }
 
     void setActualframe(unsigned int actualframe) {
-        AnimState::actualframe = actualframe;
+        AnimState::actualFrame = actualframe;
     }
 
     const chara::BVH *getBVH() const { return &bvh; };
 
     const Transform *getAnimCorrection() const { return &animCorrection; };
 
-    void increaseTimeAnim(const float dt){
-        timeAnim+=dt;
-        if (timeAnim>=bvh.getFrameTime()){
-            ++actualframe;
-            timeAnim=0;
+    void increaseTimeAnim(const float dt) {
+        timeAnim += dt;
+        if (timeAnim >= bvh.getFrameTime()) {
+            ++actualFrame;
+            timeAnim = 0;
         }
     }
 
