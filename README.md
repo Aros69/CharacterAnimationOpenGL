@@ -1,7 +1,4 @@
-# Mif37CharAnim TP 
-
-Étudiant : Robin DONNAY, 11510329  
-Mail : robin.donnay@etu.univ-lyon1.fr  
+# Character Animation OpenGL
 
 ## Compilation et éxecution
 
